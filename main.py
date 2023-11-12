@@ -9,7 +9,7 @@ if __name__ == '__main__':
         dictionary = json.load(f)
 
     iterations = 10
-    mistake_list = {}
+    mistake_dict = {}
 
     for _ in range(iterations):
         random_keys = random.sample(list(dictionary.keys()), 5)
@@ -32,22 +32,22 @@ if __name__ == '__main__':
         else:
             print(Fore.RED + 'Netacno!' + Style.RESET_ALL)
             print(Fore.YELLOW + f"Tacna rec je: {dictionary[correct]}" + Style.RESET_ALL)
-            mistake_list[correct] = dictionary[correct]
+            mistake_dict[correct] = dictionary[correct]
             print('------------------------------------')
 
     print("Sledece reci ste pogresili.")
-    for key, value in mistake_list.items():
+    for key, value in mistake_dict.items():
         print(Fore.YELLOW + f"{key}: {value}" + Style.RESET_ALL)
 
-    out_name = 'podaci.json'
+    out_name = 'mistake_list.json'
 
     try:
         with open(out_name, 'r') as o:
             existing_data = json.load(o)
     except FileNotFoundError:
-        existing_data = []
+        existing_data = {}
 
-    existing_data.extend([mistake_list])
+    existing_data.update(mistake_dict)
 
     with open(out_name, 'w') as f:
         json.dump(existing_data, f, indent=2)
