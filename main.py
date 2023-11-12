@@ -1,7 +1,6 @@
 import json
 import random 
-
-
+from colorama import Fore, Style
 
 
 path = '/Users/kriskasira/Documents/oxford3000/oxford3000.json'
@@ -11,7 +10,7 @@ with open(path, 'r') as f:
     while(1):
         random_keys = random.sample(list(dict.keys()), 5)
         correct = random.choice(random_keys)
-        print(f'Prevod engleske reci {correct} je:')
+        print(Fore.BLUE + f'Prevod engleske reci {correct} je:' + Style.RESET_ALL)
         print("Pomoc:")
         i = 1
         for key in random_keys:
@@ -23,19 +22,11 @@ with open(path, 'r') as f:
             break
         answer = int(answer1)
         if random_keys[answer-1] == correct:
-            print("*********************")
-            print("* Odgovor je tacan! *")
-            print("*********************")
+           print(Fore.GREEN + 'Tacno!' + Style.RESET_ALL)
 
         else:
-            print("*********************")
-            print("*  POGRESILI STE!  *")
-            print("*********************")
-            print(f"Tacna rec je {dict[correct]} ")
-        print('------------------------------------')
-
-
-
-
+            print(Fore.RED + 'Netacno!' + Style.RESET_ALL)
+            print(Fore.YELLOW + f"Tacna rec je: {dict[correct]}" + Style.RESET_ALL)
+            print('------------------------------------')
 
 
