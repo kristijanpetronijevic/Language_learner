@@ -4,11 +4,11 @@ from colorama import Fore, Style
 
 if __name__ == '__main__':
     path = '/Users/kriskasira/Documents/Language_learner/train100.json'
-
+    #prvih 400 presao
     with open(path, 'r') as f:
         dict_data = json.load(f)
 
-    iterations = 30
+    iterations = 100
     mistake_dict = {}
     print('Unesi 1 ako znas ili 0 ako ne znas rec!')
     i = 0
